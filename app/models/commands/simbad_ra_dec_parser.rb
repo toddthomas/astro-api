@@ -1,6 +1,7 @@
-# Simbad's coordinates look like
+# Simbad's coordinates in their ASCII format look like
 # 03 08 10.1324535 +40 57 20.328013
-# a.k.a RA hr min sec DEC deg min sec
+# a.k.a
+# RAhr RAmin RAsec DECdeg DECmin DECsec
 module Commands::SimbadRaDecParser
   def self.parse_ra(from:)
     ra_hr, ra_min, ra_sec = from.match(/^(\d+) (\d+) (\d+\.\d+)/).captures
