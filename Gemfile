@@ -43,3 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rspec-rails", "~> 4.0", :groups => [:development, :test]
 
 gem "factory_bot_rails", "~> 6.1", :groups => [:development, :test]
+
+gem "httparty", "~> 0.18.1"
+
+gem "rubocop", "~> 1.2"
