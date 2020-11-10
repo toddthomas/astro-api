@@ -63,4 +63,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+
+  # Require files in lib directory for use in specs
+  Dir[Rails.root.join("lib/**/*.rb")].each { |f| require f }
 end
