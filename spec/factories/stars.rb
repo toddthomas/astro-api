@@ -1,13 +1,5 @@
 FactoryBot.define do
   factory :star do
-    factory :beta_persei do
-      identifier { '* bet Per' }
-      right_ascension { 2.34 }
-      declination { -23.4 }
-      visual_magnitude { 5.0 }
-      spectral_type { 'B8V' }
-    end
-
     factory :alpha_cygni do
       identifier { '* alf Cyg' }
       right_ascension { 20.69053198333333 }
@@ -16,12 +8,20 @@ FactoryBot.define do
       spectral_type { 'A2Ia' }
     end
 
-    factory :gamma_cassiopeiae do
-      identifier { '* gam Cas' }
-      right_ascension { 0.9451476944444445 }
-      declination { 60.71674027777778 }
-      visual_magnitude { 2.39 }
-      spectral_type { 'B0.5IVpe' }
+    factory :alpha_eridani do
+      identifier { '* alf Eri' }
+      right_ascension { 1.628568188888889 }
+      declination { -57.23675280555556 }
+      visual_magnitude { 0.46 }
+      spectral_type { 'B6Vpe' }
+    end
+
+    factory :beta_persei do
+      identifier { '* bet Per' }
+      right_ascension { 2.34 }
+      declination { -23.4 }
+      visual_magnitude { 5.0 }
+      spectral_type { 'B8V' }
     end
 
     factory :betelgeuse do
@@ -30,6 +30,14 @@ FactoryBot.define do
       declination { 7.407064 }
       visual_magnitude { 0.42 }
       spectral_type { 'M1-M2Ia-Iab' }
+    end
+
+    factory :gamma_cassiopeiae do
+      identifier { '* gam Cas' }
+      right_ascension { 0.9451476944444445 }
+      declination { 60.71674027777778 }
+      visual_magnitude { 2.39 }
+      spectral_type { 'B0.5IVpe' }
     end
   end
 end
