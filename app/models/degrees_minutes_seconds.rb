@@ -13,8 +13,8 @@ class DegreesMinutesSeconds
     result = nil
     fields = data.strip.split(/[\s:]/)
     if fields.count > 1
-      degrees = Integer(fields[0])
-      minutes = Integer(fields[1])
+      degrees = Integer(fields[0], 10)
+      minutes = Integer(fields[1], 10)
       seconds = Float(fields[2]) if fields[2]
 
       result = new(degrees: degrees, minutes: minutes, seconds: seconds)

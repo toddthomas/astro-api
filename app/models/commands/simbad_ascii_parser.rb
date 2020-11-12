@@ -32,8 +32,7 @@ module Commands::SimbadAsciiParser
 
         star = Star.new
         star.identifier = identifier
-        star.right_ascension = Commands::SimbadRaDecParser.parse_ra(from: fields[3])
-        star.declination = Commands::SimbadRaDecParser.parse_dec(from: fields[3])
+        star.coordinates = SphericalEquatorialCoordinates.parse(fields[3])
         star.visual_magnitude = fields[6].to_f
         star.spectral_type = fields[9].strip
 

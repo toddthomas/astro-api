@@ -11,8 +11,8 @@ class HoursMinutesSeconds
 
   def self.parse(data)
     fields = data.strip.split(/[\s:]/)
-    hours = Integer(fields[0].delete_prefix('0')) # `Integer` won't parse '08' or '09', but all other cases work. 🤷‍♂️
-    minutes = Integer(fields[1].delete_prefix('0')) if fields[1]
+    hours = Integer(fields[0], 10)
+    minutes = Integer(fields[1], 10)
     seconds = Float(fields[2]) if fields[2]
 
     result = new(hours: hours, minutes: minutes, seconds: seconds)

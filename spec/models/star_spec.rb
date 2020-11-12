@@ -10,7 +10,7 @@ describe Star do
       expect(deneb1 == deneb2).to eq true
     end
 
-    it 'is false when different instances aren\'t logically equal' do
+    it "is false when different instances aren't logically equal" do
       expect(deneb1 == betelgeuse).to eq false
     end
 
@@ -28,13 +28,21 @@ describe Star do
 
     let(:bad_ra) do
       betelgeuse.tap do |bad|
-        bad.right_ascension = 25.134613
+        bad.coordinates.right_ascension = HoursMinutesSeconds.new(
+          hours:25,
+          minutes: 73,
+          seconds: 900.2
+        )
       end
     end
 
     let(:bad_dec) do
       betelgeuse.tap do |bad|
-        bad.declination = -345.161346
+        bad.coordinates.declination = DegreesMinutesSeconds.new(
+          degrees: -152,
+          minutes: 700,
+          seconds: -452.3
+        )
       end
     end
 
