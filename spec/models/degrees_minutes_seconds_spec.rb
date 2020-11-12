@@ -8,7 +8,7 @@ describe DegreesMinutesSeconds do
   end
 
   context '::new_from_real' do
-    it 'succeeds with a valid positive real values' do
+    it 'succeeds with valid positive real values' do
       expected_value = DegreesMinutesSeconds.new(degrees: 3, minutes: 1, seconds: 52.5)
       expect(DegreesMinutesSeconds.new_from_real(3.03125)).to eq expected_value
 
