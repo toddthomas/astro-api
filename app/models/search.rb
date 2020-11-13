@@ -3,6 +3,8 @@ class Search < ApplicationRecord
   validates_numericality_of :limiting_magnitude, allow_nil: true
   validates_inclusion_of :sort_by, in: ->(instance) { instance.model_class.sortable_attributes },
                                    message: "can't sort by that attribute"
+  validates_numericality_of :max_results, less_than_or_equal_to: 1000, only_integer: true,
+                            message: 'must be an integer no greater than 1000'
 
   def simbad_query_params
     # Ex.: Criteria=otypes%3D'Star'&OutputMode=List&output.format=ASCII&maxObject=100
