@@ -7,6 +7,9 @@ class StarsController < ApplicationController
     @search.constellation_abbreviation = params[:constellation_id]
     @search.limiting_magnitude = params[:limiting_magnitude]
     @search.max_results = params[:max_results] if params.has_key?(:max_results)
+    unless @search.valid?
+      raise InvalidQueryError, @search.errors.messages
+    end
 
     simbad = Simbad.new
     simbad_response = simbad.stars(@search.simbad_query_params)

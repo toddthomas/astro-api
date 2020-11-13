@@ -1,4 +1,7 @@
 class Search < ApplicationRecord
+  validates_presence_of :model_class_name
+  validates_numericality_of :limiting_magnitude, allow_nil: true
+
   def simbad_query_params
     # Ex.: Criteria=otypes%3D'Star'&OutputMode=List&output.format=ASCII&maxObject=100
     params = {}
