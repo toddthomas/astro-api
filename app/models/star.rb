@@ -10,6 +10,14 @@ class Star
     'Star'
   end
 
+  def self.sortable_attributes
+    %w(identifier visual_magnitude object_type spectral_type)
+  end
+
+  def self.default_sort
+    :identifier
+  end
+
   def ==(other)
     return true if other.equal?(self)
     return false unless other.is_a?(self.class)

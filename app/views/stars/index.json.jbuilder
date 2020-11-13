@@ -5,7 +5,8 @@ json.search do
         :model_class_name,
         :constellation_abbreviation,
         :limiting_magnitude,
-        :max_results
+        :max_results,
+        :sort_by
     )
   end
 
