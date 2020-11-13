@@ -12,11 +12,28 @@ class StarsController < ApplicationController
       raise InvalidQueryError, @search.errors.messages
     end
 
+    # Has this search been successfully completed before?
+    existing_search = Commands::SearchFinder.find_equivalent_of(@search)
+    if existing_search
+      Rails.logger.info "we've done search #{@search} before, so its results could be stored locally"
+      # TODO: actually store the results locally and use them next time.
+    end
+
     simbad = Simbad.new
     simbad_response = simbad.stars(@search.simbad_query_params)
     raise SimbadError, "SIMBAD responded with error code [#{response.code}]" unless simbad_response.code == 200
 
     @stars = Commands::SimbadAsciiParser.parse(simbad_response.body)
     @stars.sort_by! { |star| star.send(@search.sort_by.to_sym) }
+
+    # Simbad query succeeded. Save the search.
+    begin
+      # TODO: If we were saving result objects, we wouldn't have gotten here.
+      @search.save! unless existing_search
+    rescue ActiveRecordError::ConflictError
+      # Might happen if the service has lots of concurrent users. Probably not a problem, but keep track of it.
+      Rails.logger.info "same search #{@search} completed since the start of this request"
+    end
+    # TODO: here's where we'd save the stars found by the search for faster response to the same search next time.
   end
 end
