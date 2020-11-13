@@ -1,0 +1,2 @@
+class SimbadParserError < RuntimeError
+end

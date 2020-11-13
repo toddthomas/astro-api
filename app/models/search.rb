@@ -13,7 +13,7 @@ class Search < ApplicationRecord
     criteria << "Vmag <= #{limiting_magnitude}" if limiting_magnitude.present?
 
     if constellation_abbreviation.present?
-      constellation = Constellation.find_by_abbreviation(constellation_abbreviation)
+      constellation = Constellation.find(constellation_abbreviation)
       boundary_vertex_strings = constellation.boundary_vertices.map(&:to_rounded_string)
       criteria << "region(polygon, #{boundary_vertex_strings.join(', ')})"
     end

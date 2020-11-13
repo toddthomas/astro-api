@@ -24,7 +24,15 @@ class Constellation
     @@all ||= YAML.load(File.read('constellations.yml'))
   end
 
-  def self.find_by_abbreviation(abbreviation)
-    all.select { |constellation| constellation.abbreviation == abbreviation }.first
+  def self.find(id)
+    downcased_id = id.downcase
+
+    result = all.find do |c|
+      c.abbreviation.downcase == downcased_id ||
+        c.name.downcase == downcased_id
+    end
+    raise NotFoundError, "no constellation identified by '#{id}'" if result.nil?
+
+    result
   end
 end

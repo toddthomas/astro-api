@@ -22,25 +22,28 @@ module Commands::SimbadAsciiParser
 
     ascii.each_line do |line|
       if line =~ /^\d+\s*\|/
-        fields = line.split('|')
-        identifier = fields[1].strip
+        begin
+          fields = line.split('|')
+          identifier = fields[1].strip
 
-        # For reasons currently unknown, queries for objects of type 'Star' sometimes return objects from the
-        # Revised Bologna Catalogue of M31 globular clusters and candidates (http://www.bo.astro.it/M31/)--even when
-        # they should be filtered out by magnitude constraints. Exclude them manually here.
-        next if identifier.start_with?('Bol ')
+          # For reasons currently unknown, queries for objects of type 'Star' sometimes return objects from the
+          # Revised Bologna Catalogue of M31 globular clusters and candidates (http://www.bo.astro.it/M31/)--even when
+          # they should be filtered out by magnitude constraints. Exclude them manually here.
+          next if identifier.start_with?('Bol ')
 
-        star = Star.new
-        star.identifier = identifier
-        star.coordinates = SphericalEquatorialCoordinates.parse(fields[3])
-        star.visual_magnitude = fields[6].to_f
-        star.spectral_type = fields[9].strip
+          star = Star.new
+          star.identifier = identifier
+          star.coordinates = SphericalEquatorialCoordinates.parse(fields[3])
+          star.visual_magnitude = fields[6].to_f
+          star.spectral_type = fields[9].strip
 
-        unless star.valid?
-          raise "couldn't parse star from data [#{line}]"
+          raise "couldn't parse star from data [#{line}]" unless star.valid?
+
+          stars << star
+
+        rescue => e
+          raise SimbadParserError, e.message
         end
-
-        stars << star
       end
     end
 

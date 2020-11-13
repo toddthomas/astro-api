@@ -10,7 +10,7 @@ class StarsController < ApplicationController
 
     simbad = Simbad.new
     simbad_response = simbad.stars(@search.simbad_query_params)
-    raise "error [#{response.code}] querying SIMBAD" unless simbad_response.code == 200
+    raise SimbadError, "SIMBAD responsed with error code [#{response.code}]" unless simbad_response.code == 200
 
     @stars = Commands::SimbadAsciiParser.parse(simbad_response.body)
   end

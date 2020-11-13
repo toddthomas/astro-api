@@ -1,0 +1,2 @@
+class SimbadError < RuntimeError
+end
