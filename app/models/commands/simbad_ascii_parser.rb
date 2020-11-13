@@ -33,6 +33,7 @@ module Commands::SimbadAsciiParser
 
           star = Star.new
           star.identifier = identifier
+          star.object_type = fields[2].strip
           star.coordinates = SphericalEquatorialCoordinates.parse(fields[3])
           star.visual_magnitude = fields[6].to_f
           star.spectral_type = fields[9].strip
