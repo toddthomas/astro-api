@@ -11,8 +11,7 @@ json.search do
 
   json.result_count @stars.count
 
-  json.results(@stars) do |star|
-    json.identifier star.identifier
-
+  json.results @stars do |star|
+    json.partial! 'stars/star', star: star
   end
 end
