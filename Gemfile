@@ -51,3 +51,7 @@ gem "rubocop", "~> 1.2"
 gem "nokogiri", "~> 1.10"
 
 gem "jbuilder", "~> 2.10"
+
+group :test do
+  gem 'database_cleaner-active_record'
+end
