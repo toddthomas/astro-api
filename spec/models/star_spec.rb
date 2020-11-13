@@ -22,14 +22,14 @@ describe Star do
   context 'validity check' do
     let(:bad_identifier) do
       betelgeuse.clone.tap do |bad|
-        bad.identifier = 'Bol D182'
+        bad.identifier = ''
       end
     end
 
     let(:bad_ra) do
       betelgeuse.tap do |bad|
         bad.coordinates.right_ascension = HoursMinutesSeconds.new(
-          hours:25,
+          hours: 25,
           minutes: 73,
           seconds: 900.2
         )
@@ -39,9 +39,10 @@ describe Star do
     let(:bad_dec) do
       betelgeuse.tap do |bad|
         bad.coordinates.declination = DegreesMinutesSeconds.new(
-          degrees: -152,
+          sign: :negative,
+          degrees: 152,
           minutes: 700,
-          seconds: -452.3
+          seconds: 452.3
         )
       end
     end

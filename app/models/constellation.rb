@@ -23,4 +23,8 @@ class Constellation
   def self.all
     @@all ||= YAML.load(File.read('constellations.yml'))
   end
+
+  def self.find_by_abbreviation(abbreviation)
+    all.select { |constellation| constellation.abbreviation == abbreviation }.first
+  end
 end

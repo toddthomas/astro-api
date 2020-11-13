@@ -6,6 +6,10 @@ class Star
   attr_accessor :object_type
   attr_accessor :spectral_type
 
+  def self.simbad_types
+    'Star'
+  end
+
   def ==(other)
     return true if other.equal?(self)
     return false unless other.is_a?(self.class)
@@ -14,7 +18,7 @@ class Star
   end
 
   def valid?
-    identifier[0] == '*' &&
+    identifier.present? &&
       coordinates.valid? &&
       visual_magnitude.is_a?(Numeric)
   end

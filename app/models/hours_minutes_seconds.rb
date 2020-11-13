@@ -42,4 +42,12 @@ class HoursMinutesSeconds
       (0..60).include?(minutes) &&
       (0..60).include?(seconds)
   end
+
+  def to_s
+    "#{hours} #{minutes} #{seconds}"
+  end
+
+  def to_rounded_string
+    "#{hours} #{minutes} #{seconds.round(4)}"
+  end
 end

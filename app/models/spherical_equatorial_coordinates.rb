@@ -32,4 +32,12 @@ class SphericalEquatorialCoordinates
     right_ascension.valid? &&
       declination.valid?
   end
+
+  def to_s
+    "#{right_ascension.to_s} #{declination.to_s}"
+  end
+
+  def to_rounded_string
+    "#{right_ascension.to_rounded_string} #{declination.to_decimal_degrees_string}"
+  end
 end
