@@ -21,7 +21,7 @@ module Commands::SimbadAsciiParser
     stars = []
 
     ascii.each_line do |line|
-      if line =~ /^\d+\s*\|/
+      if line.chomp! =~ /^\d+\s*\|/
         begin
           fields = line.split('|')
           identifier = fields[1].strip
@@ -37,12 +37,14 @@ module Commands::SimbadAsciiParser
           star.visual_magnitude = fields[6].to_f
           star.spectral_type = fields[9].strip
 
-          raise "couldn't parse star from data [#{line}]" unless star.valid?
+          unless star.valid?
+            raise "invalid star #{star.inspect}"
+          end
 
           stars << star
 
         rescue => e
-          raise SimbadParserError, e.message
+          raise SimbadParserError, "error [#{e.message}] parsing line [#{line}]"
         end
       end
     end

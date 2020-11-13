@@ -8,14 +8,20 @@ class SphericalEquatorialCoordinates
   end
 
   def self.parse(data)
-    ra_data = data.match(/^(\d+ \d+ \d+\.\d+)/).captures.first
-    dec_data = data.match(/([+-]\d+ \d+ \d+\.\d+)/).captures.first
+    parse_error_message = "couldn't parse RA and DEC from [#{data}]"
+    ra_match = data.match(/^(\d+ \d+ \d+\.*\d+)/)
+    dec_match = data.match(/([+-]\d+ \d+ \d+\.*\d+)/)
+    if ra_match.nil? || dec_match.nil?
+      raise ArgumentError, parse_error_message
+    end
+    ra_data = ra_match.captures.first
+    dec_data = dec_match.captures.first
 
     result = new(
       right_ascension: HoursMinutesSeconds.parse(ra_data),
       declination: DegreesMinutesSeconds.parse(dec_data)
     )
-    raise ArgumentError, "couldn't parse RA and DEC from [#{data}]" unless result.valid?
+    raise ArgumentError, parse_error_message unless result.valid?
 
     result
   end

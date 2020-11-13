@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  rescue_from StandardError, with: :render_internal_server_error_response
   rescue_from NotFoundError, ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from SimbadError, with: :render_bad_gateway_response
   rescue_from SimbadParserError, with: :render_internal_server_error_response
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::API
   end
 
   def render_error_response(code:, exception:)
-    @error = ApiError.new(code: code, message: exception.message)
+    @error = ApiError.new(code: code, message: exception.message, exception: exception)
     render 'error', formats: [:json], status: code
   end
 end
