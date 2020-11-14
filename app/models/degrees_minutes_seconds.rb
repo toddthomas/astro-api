@@ -58,6 +58,19 @@ class DegreesMinutesSeconds
     result
   end
 
+  def to_s
+    "#{negative? ? '-' : '+'}#{degrees}° #{minutes}' #{seconds}\""
+  end
+
+  def to_decimal_degrees_string
+    "#{!negative? ? '+' : ''}#{to_decimal_degrees}"
+
+  end
+
+  def to_rounded_string
+    "#{negative? ? '-' : '+'}#{degrees} #{minutes} #{seconds.round(7)}"
+  end
+
   def ==(other)
     return true if other.equal?(self)
     return false unless other.is_a?(self.class)
@@ -75,18 +88,5 @@ class DegreesMinutesSeconds
       (-90..90).include?(degrees) &&
       (0..60).include?(minutes) &&
       (0..60).include?(seconds)
-  end
-
-  def to_s
-    "#{negative? ? '-' : '+'}#{degrees} #{minutes} #{seconds}"
-  end
-
-  def to_decimal_degrees_string
-    "#{!negative? ? '+' : ''}#{to_decimal_degrees}"
-
-  end
-
-  def to_rounded_string
-    "#{negative? ? '-' : '+'}#{degrees} #{minutes} #{seconds.round(7)}"
   end
 end

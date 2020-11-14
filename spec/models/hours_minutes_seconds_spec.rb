@@ -7,6 +7,12 @@ describe HoursMinutesSeconds do
     end
   end
 
+  context '#to_s' do
+    it 'has intended format' do
+      expect(HoursMinutesSeconds.new(hours: 14, minutes: 45, seconds: 16.2341).to_s).to eq '14h 45m 16.2341s'
+    end
+  end
+
   context '::parse' do
     it 'succeeds with valid data' do
       expected_value = HoursMinutesSeconds.new(hours: 16, minutes: 18, seconds: 2.4563234)

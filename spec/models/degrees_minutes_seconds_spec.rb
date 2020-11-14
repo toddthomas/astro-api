@@ -68,24 +68,24 @@ describe DegreesMinutesSeconds do
   end
 
   context '#to_s' do
-    it 'has correct format for positive value' do
+    it 'has intended format for positive value' do
       subject = DegreesMinutesSeconds.new(sign: :positive, degrees: 10, minutes: 33, seconds: 45.0)
-      expect(subject.to_s).to eq '+10 33 45.0'
+      expect(subject.to_s).to eq '+10° 33\' 45.0"'
     end
 
-    it 'has correct format for negative value' do
+    it 'has intended format for negative value' do
       subject = DegreesMinutesSeconds.new(sign: :negative, degrees: 52, minutes: 1, seconds: 52.5)
-      expect(subject.to_s).to eq '-52 1 52.5'
+      expect(subject.to_s).to eq '-52° 1\' 52.5"'
     end
 
-    it 'has correct format for pos zero-degree value' do
+    it 'has intended format for pos zero-degree value' do
       subject = DegreesMinutesSeconds.new(sign: :positive, degrees: 0, minutes: 0, seconds: 56.25)
-      expect(subject.to_s).to eq '+0 0 56.25'
+      expect(subject.to_s).to eq '+0° 0\' 56.25"'
     end
 
-    it 'has correct format for neg zero-degree value' do
+    it 'has intended format for neg zero-degree value' do
       subject = DegreesMinutesSeconds.new(sign: :negative, degrees: 0, minutes: 0, seconds: 56.25)
-      expect(subject.to_s).to eq '-0 0 56.25'
+      expect(subject.to_s).to eq '-0° 0\' 56.25"'
     end
   end
 end

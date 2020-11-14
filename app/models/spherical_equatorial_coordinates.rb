@@ -40,7 +40,7 @@ class SphericalEquatorialCoordinates
   end
 
   def to_s
-    "#{right_ascension.to_s} #{declination.to_s}"
+    "RA #{right_ascension.to_s} Dec #{declination.to_s}"
   end
 
   def to_rounded_string
