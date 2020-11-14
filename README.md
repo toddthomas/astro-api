@@ -41,7 +41,7 @@ By default, results are sorted by identifier. You can sort by other star propert
 GET https://secure-springs-70266.herokuapp.com/stars?limiting_magnitude=2&sort_by=visual_magnitude
 Accept: application/json
 ```
-Astronomical magnitudes are an ancient concept. They were originally a ranking of brightness into distinct tiers, like "1st brightest", 2nd brightest", "5th brightest", etc. Later they were formalized into a logarithmic scale, but it's still the case that smaller the magnitude value, the brighter the object. This app sorts objects into ascending order (descending order is currently not available), but due to the inversion of the scale for magnitudes, that still means objects sorted by magnitude are ordered in descending brightness.
+Astronomical magnitudes are an ancient concept. They were originally a ranking of brightness into tiers, like "1st brightest", 2nd brightest", "5th brightest", etc. Later they were formalized into a logarithmic scale, but it's still the case that smaller the magnitude value, the brighter the object. This app sorts objects into ascending order (descending order is currently not available), but due to the inversion of the scale for magnitudes, that still means objects sorted by magnitude are ordered in descending brightness.
 
 Query parameters are validated. For example, setting `limiting_magnitude` to a non-numeric value results in a "400: Bad Request" response.
 ```http request
