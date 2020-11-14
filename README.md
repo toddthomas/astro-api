@@ -2,7 +2,7 @@
 
 Astro API is a proof-of-concept of a RESTful JSON API for searching the [SIMBAD](http://simbad.u-strasbg.fr/simbad/) astronomical database. Currently it supports searching for stars only, and filtering by constellation[^1] and limiting magnitude.
 
-[^1]: Currently, only a few constellations can be used for filtering. The implementation of filtering by constellation requires constellation boundary data in the form of the vertices of the polygon comprising the boundary. I've obtained such vertices for all constellations from the IAU at [https://www.iau.org/public/themes/constellations], and the app appears to be submitting the vertices correctly to SIMBAD, but for many constellations, no results are returned. I thought that might be due to a limit on the number of vertices that SIMBAD can process, but it doesn't seem to be that simple. It may be that the vertex data I obtained isn't accurate enough.
+[^1]: Currently, only a few constellations can be used for filtering. The implementation of filtering by constellation requires constellation boundary data in the form of the vertices of the polygon comprising the boundary. I've obtained such vertices for all constellations from the IAU at https://www.iau.org/public/themes/constellations, and the app appears to be submitting the vertices correctly to SIMBAD, but for many constellations, no results are returned. I thought that might be due to a limit on the number of vertices that SIMBAD can process, but it doesn't seem to be that simple. It may be that the vertex data I obtained isn't accurate enough.
 
 ## Motivation
 
@@ -10,7 +10,7 @@ SIMBAD is widely used by professional and amateur astronomers. At the time of th
 
 ## Tutorial
 
-The code in this repository is deployed on Heroku at [https://secure-springs-70266.herokuapp.com]. Let's try it out.
+The code in this repository is deployed on Heroku at https://secure-springs-70266.herokuapp.com. Let's try it out.
 
 ### Stars
 The `/stars` resource lets you search for stars. JSON is the only supported representation of the results.
