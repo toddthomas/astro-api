@@ -24,6 +24,7 @@ class ApplicationController < ActionController::API
   end
 
   def render_error_response(code:, exception:)
+    Rails.logger.error "rendering '#{code}' response due to exception #{exception.inspect}"
     @error = ApiError.new(code: code, message: exception.message, exception: exception)
     render 'error', formats: [:json], status: code
   end
