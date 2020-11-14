@@ -33,6 +33,7 @@ The default maximum of 100 results still applies here. You can set the maximum n
 GET https://secure-springs-70266.herokuapp.com/stars?limiting_magnitude=2&max_results=10
 Accept: application/json
 ```
+You can't set it larger than 1000, because I haven't done extensive testing with large values, and I don't want to blow up SIMBAD or Heroku.
 
 By default, results are sorted by identifier. You can sort by other star properties, such as visual magnitude, if you like.
 
