@@ -75,7 +75,9 @@ Accept: application/json
       },
 ```
 
-(Again, I've omitted all but the first result.) The default maximum of 100 results still applies here, but note that there are only 56 in this case, so I think we've found all the stars in SIMBAD with a magnitude greater than 2. You can set the maximum number of results to something else if you like.
+(Again, I've omitted all but the first result.) The default maximum of 100 results still applies here, but note that there are only 56 in this case, so I think we've found all the stars in SIMBAD with a magnitude greater than 2.
+
+You can set the maximum number of results to something else if you like.
 
 ```http request
 GET https://secure-springs-70266.herokuapp.com/stars?limiting_magnitude=2&max_results=1
@@ -97,7 +99,7 @@ Accept: application/json
       {
         "star": {
           "identifier": "* alf Cyg",
-          "object_type": "OID=@92338   (@@10605,0)",
+          "object_type": "sg*",
           "spectral_type": "A2Ia",
           "coordinates": "RA 20h 41m 25.91514s Dec +45° 16' 49.2197\"",
           "visual_magnitude": 1.25
