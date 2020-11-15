@@ -22,7 +22,9 @@ class Star
     return true if other.equal?(self)
     return false unless other.is_a?(self.class)
 
-    identifier == other.identifier
+    identifier == other.identifier &&
+      object_type == other.object_type &&
+      spectral_type == other.spectral_type
   end
 
   def valid?

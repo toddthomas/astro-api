@@ -39,7 +39,7 @@ module Commands::SimbadAsciiSingleResultParser
       when /^Object/
         fields = line.split('---')
         star.identifier = fields[0].delete_prefix('Object').strip
-        star.object_type = fields[2].strip
+        star.object_type = fields[1].strip
       when /^Coordinates\(ICRS,ep=J2000,eq=2000/
         star.coordinates = SphericalEquatorialCoordinates.parse(line)
       when /^Flux V/

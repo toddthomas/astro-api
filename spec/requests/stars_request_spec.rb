@@ -31,7 +31,9 @@ RSpec.describe 'Stars', type: :request do
       expect(response).to have_http_status :success
       response_object = JSON.parse(response.body)
       expect(response_object.dig('search', 'result_count')).to eq 1
-      expect(response_object.dig('search', 'results').first.dig('star', 'identifier')).to eq '* alf Cyg'
+      results = response_object.dig('search', 'results')
+      expect(results.first.dig('star', 'identifier')).to eq '* alf Cyg'
+      expect(results.first.dig('star', 'object_type')).to eq 'sg*'
     end
 
     it 'returns http bad request for invalid limiting_magnitude' do

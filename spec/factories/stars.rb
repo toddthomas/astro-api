@@ -19,7 +19,7 @@ FactoryBot.define do
     factory :beta_persei do
       identifier { '* bet Per' }
       coordinates { SphericalEquatorialCoordinates.parse('03 08 10.1324535  +40 57 20.328013') }
-      visual_magnitude { 5.0 }
+      visual_magnitude { 2.12 }
       spectral_type { 'B8V' }
       object_type { 'Al*' }
     end
