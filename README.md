@@ -41,12 +41,9 @@ That gives a response with a body like this
           "coordinates": "RA 20h 56m 38.5275565387s Dec +36° 19' 49.734260067\"",
           "visual_magnitude": 9.45
         }
-      }
-    ]
-  }
-}
+      },
 ```
-Except that there are 99 more stars I've omitted to save your scrolling finger.
+Then there are 99 more stars I've omitted to save your scrolling finger.
 
 There are a lot of stars in the sky! By default, searches return a maximum of 100 results, but in this case, I don't know how SIMBAD picks these 100 stars out of the millions in its database. We need to narrow our search. For example, we can find all stars with a visual magnitude brighter than 2.
 
