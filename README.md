@@ -1,8 +1,6 @@
 # Astro API
 
-Astro API is a proof-of-concept of a RESTful JSON API for searching the [SIMBAD](http://simbad.u-strasbg.fr/simbad/) astronomical database. Currently it supports searching for stars only, and filtering by constellation[^1] and limiting magnitude.
-
-[^1]: Currently, only a few constellations can be used for filtering. The implementation of filtering by constellation requires constellation boundary data in the form of the vertices of the polygon comprising the boundary. I've obtained such vertices for all constellations from the IAU at https://www.iau.org/public/themes/constellations, and the app appears to be submitting the vertices correctly to SIMBAD, but for many constellations, no results are returned. I thought that might be due to a limit on the number of vertices that SIMBAD can process, but it doesn't seem to be that simple. It may be that the vertex data I obtained isn't accurate enough.
+Astro API is a proof-of-concept of a RESTful JSON API for searching the [SIMBAD](http://simbad.u-strasbg.fr/simbad/) astronomical database. Currently it supports searching for stars only, and filtering by limiting magnitude and constellation (with some [caveats](#Caveats)).
 
 ## Motivation
 
@@ -110,6 +108,8 @@ Accept: application/json
 }
 ```
 You can't set it larger than 1000, because I haven't done extensive testing with large values, and I don't want to blow up SIMBAD or Heroku.
+
+By the way, SIMBAD responds with a completely different resource representation when you request only one result. I didn't know that until I was testing the above example while writing this readme. This is the kind of quirkiness that motivates this wrapper API.
 
 By default, results are sorted by identifier. You can sort by other star properties, such as visual magnitude, if you like.
 
@@ -313,6 +313,10 @@ Accept: application/json
 }
 ```
 
+## Caveats
+
+Currently, only some constellations can be used for filtering. The implementation of filtering by constellation requires constellation boundary data in the form of the vertices of the polygon comprising the boundary. The constellation data I scraped from the IAU at https://www.iau.org/public/themes/constellations includes these vertices, and the app appears to be submitting them correctly to SIMBAD, but for many constellations, no results are returned. I thought that might be due to a limit on the number of vertices that SIMBAD can process, but it doesn't seem to be that simple. It may be that the vertex data I obtained isn't accurate enough. The Rake task `constellations:search_in_all` generates a report in the file `results-for-all-constellations.txt` of the success or failure of attempting to find stars in each constellation. See that file to learn which constellation filters are working.
+
 ## Unimplemented API Ideas
 
 That's it for what you can currently do with the API. Here are some things I'd like to be able to do with it in the future.
@@ -329,20 +333,24 @@ GET https://secure-springs-70266.herokuapp.com/stars/types/carbon?limiting_magni
 ```
 Carbon stars are really exciting to view in a telescope because they have a deep reddish-orange color. "carbon" is a convenience term that doesn't match SIMBAD's type identifier for carbon stars (`C*`), so a mapping would have to be established.
 
-Get the JSON data for [Betelgeuse](https://en.wikipedia.org/wiki/Betelgeuse).
+Get the JSON data for a particular star by name, such as [Betelgeuse](https://en.wikipedia.org/wiki/Betelgeuse).
 ```http request
 GET https://secure-springs-70266.herokuapp.com/stars/betelgeuse
 ```
-The SIMBAD API for this has a completely different entity format, so it requires a new parser.
 
 Galaxies! And other objects.
 ```http request
-
 GET https://secure-springs-70266.herokuapp.com/galaxies?limiting_magnitude=14.0&type=spiral
-###
+```
+
+```http request
 GET https://secure-springs-70266.herokuapp.com/galaxies/ngc4565
-###
+```
+
+```http request
 GET https://secure-springs-70266.herokuapp.com/nebulae?type=emission
-###
+```
+
+```http request
 GET https://secure-springs-70266.herokuapp.com/nebulae/m42
 ```
