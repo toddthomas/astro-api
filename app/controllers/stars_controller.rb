@@ -21,7 +21,11 @@ class StarsController < ApplicationController
 
     simbad = Simbad.new
     simbad_response = simbad.stars(@search.simbad_query_params)
-    raise SimbadError, "SIMBAD responded with error code [#{response.code}]" unless simbad_response.code == 200
+    unless simbad_response.code == 200
+      message = "SIMBAD responded with error code [#{response.code}]"
+      Rails.logger.error message + " and body [#{response.body[..100]}"
+      raise SimbadError, message
+    end
 
     @stars = Commands::SimbadAsciiParser.parse(simbad_response.body)
     @stars.sort_by! { |star| star.send(@search.sort_by.to_sym) }
