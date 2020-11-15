@@ -7,6 +7,6 @@ module Commands::SearchFinder
       constellation_abbreviation: search.constellation_abbreviation,
       limiting_magnitude: search.limiting_magnitude,
       max_results: search.max_results
-    ).first
+    ).take
   end
 end
