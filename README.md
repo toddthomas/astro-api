@@ -189,6 +189,78 @@ Accept: application/json
 }
 ```
 
+If you know what star you're looking for, you can ask for it by name. Let's look up [Aldebaran](https://en.wikipedia.org/wiki/Aldebaran), the brightest star in Taurus.
+
+```http request
+GET http://secure-springs-70266.herokuapp.com/stars/Aldebaran
+Accept: application/json
+```
+
+```json
+{
+  "star": {
+    "identifier": "* alf Tau",
+    "object_type": "LP?",
+    "spectral_type": "K5+III",
+    "coordinates": "RA 4h 35m 55.23907s Dec +16° 30' 33.4885\"",
+    "visual_magnitude": 0.86
+  }
+}
+```
+
+If you know SIMBAD's idiosyncratic identifier syntax—`* alf Tau` means Alpha Tauri, another name for Aldebaran—you can use that directly.
+
+```http request
+GET http://secure-springs-70266.herokuapp.com/stars/*%20alf%20Tau
+Accept: application/json
+```
+
+```json
+{
+  "star": {
+    "identifier": "* alf Tau",
+    "object_type": "LP?",
+    "spectral_type": "K5+III",
+    "coordinates": "RA 4h 35m 55.23907s Dec +16° 30' 33.4885\"",
+    "visual_magnitude": 0.86
+  }
+}
+```
+
+SIMBAD knows a lot of identifiers for each celestial object in its database. Yet another name for Aldebaran is HD 29139, which comes from the [_Henry Draper Catalogue_](https://en.wikipedia.org/wiki/Henry_Draper_Catalogue).
+
+```http request
+GET http://secure-springs-70266.herokuapp.com/stars/HD%2029139
+Accept: application/json
+```
+
+```json
+{
+  "star": {
+    "identifier": "* alf Tau",
+    "object_type": "LP?",
+    "spectral_type": "K5+III",
+    "coordinates": "RA 4h 35m 55.23907s Dec +16° 30' 33.4885\"",
+    "visual_magnitude": 0.86
+  }
+}
+```
+
+You'll get a 404 if SIMBAD can't make any sense out of the identifier you provide.
+
+```http request
+GET http://secure-springs-70266.herokuapp.com/stars/beeblebrox
+Accept: application/json
+```
+
+```json
+{
+  "error": {
+    "message": "can't find star identified by 'beeblebrox'"
+  }
+}
+```
+
 ### Constellations
 
 Still, it's a really big universe. How can we narrow our search for interesting stars even further? The app knows about all 88 constellations as defined by the International Astronomical Union. These data were scraped from https://www.iau.org/public/themes/constellations, and there is a rake task (`constellations:generate_yaml`) to regenerate the file where they are stored.
