@@ -40,4 +40,16 @@ class StarsController < ApplicationController
     end
     # TODO: here's where we'd save the stars found by the search for faster response to the same search next time.
   end
+
+  def show
+    simbad = Simbad.new
+    simbad_response = simbad.star(params[:id])
+    unless simbad_response.code == 200
+      message = "SIMBAD responded with error code [#{response.code}]"
+      Rails.logger.error message + " and body [#{response.body[..100]}"
+      raise SimbadError, message
+    end
+
+    @star = Commands::SimbadAsciiSingleResultParser.parse(simbad_response)
+  end
 end

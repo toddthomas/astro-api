@@ -111,4 +111,18 @@ describe Simbad do
       expect(response.body).to match /Number of objects : 2/
     end
   end
+
+  context '/stars:id' do
+    it 'works for a valid star identifier' do
+      response = subject.star('betelgeuse')
+      expect(response.code).to eq 200
+      expect(response.body).to match /^Object \* alf Ori/
+    end
+
+    it 'has response with error message for invalid star identifier' do
+      response = subject.star('beeblebrox')
+      expect(response.code).to eq 200
+      expect(response.body).to match /No known catalog could be found/
+    end
+  end
 end

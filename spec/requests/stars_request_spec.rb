@@ -38,15 +38,28 @@ RSpec.describe 'Stars', type: :request do
 
     it 'returns http bad request for invalid limiting_magnitude' do
       get '/stars', params: {limiting_magnitude: 'shazbot'}, headers: headers
-      expect(response).to have_http_status(:bad_request)
+      expect(response).to have_http_status :bad_request
       expect(response.body).to match /is not a number/
     end
 
     it 'returns http bad request for invalid sort_by' do
       get '/stars', params: {sort_by: 'coordinates'}, headers: headers
-      expect(response).to have_http_status(:bad_request)
+      expect(response).to have_http_status :bad_request
       expect(response.body).to match /can\'t sort by that attribute/
     end
+  end
 
+  context 'GET /stars/:id' do
+    it 'returns http success and correct star for a valid ID' do
+      get '/stars/betelgeuse', headers: headers
+      expect(response).to have_http_status :success
+      response_object = JSON.parse(response.body)
+      expect(response_object.dig('star', 'identifier')).to eq '* alf Ori'
+    end
+
+    it 'returns http not found for invalid ID' do
+      get '/stars/beeblebrox', headers: headers
+      expect(response).to have_http_status :not_found
+    end
   end
 end

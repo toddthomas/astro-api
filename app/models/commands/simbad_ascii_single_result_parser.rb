@@ -36,6 +36,8 @@ module Commands::SimbadAsciiSingleResultParser
 
     ascii.each_line do |line|
       case line
+      when /^!!\s+'(.*)'/
+        raise NotFoundError, "can't find star identified by '#{$1}'"
       when /^Object/
         fields = line.split('---')
         star.identifier = fields[0].delete_prefix('Object').strip
@@ -51,6 +53,6 @@ module Commands::SimbadAsciiSingleResultParser
       end
     end
 
-    [star]
+    star
   end
 end

@@ -8,7 +8,15 @@ describe 'SimbadAsciiSingleResultParser' do
       response_body = File.read(File.join(Rails.root, 'spec', 'resources', 'single-result.txt'))
 
       stars = Commands::SimbadAsciiSingleResultParser.parse(response_body)
-      expect(stars).to eq [alpha_cygni]
+      expect(stars).to eq alpha_cygni
+    end
+
+    it 'raises `NotFoundError` for invalid ID' do
+      response_body = File.read(File.join(Rails.root, 'spec', 'resources', 'single-result-not-found.txt'))
+
+      expect do
+        Commands::SimbadAsciiSingleResultParser.parse(response_body)
+        end.to raise_error NotFoundError, /can't find star identified by 'beeblebrox'/
     end
   end
 end
