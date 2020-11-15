@@ -47,24 +47,34 @@ namespace :constellations do
 
   require_relative '../simbad'
 
-  desc "Try finding stars greater than mag 4 in every constellation, writing the results to a file"
+  desc "Try finding stars in every constellation and write the results to a file"
   task search_in_all: :environment do
     File.open('results-for-all-constellations.txt', 'w') do |file|
       Constellation.all.each do |const|
+        file.print "#{const.name} (#{const.boundary_vertices.count} vertices): "
+
         search = Search.new
         search.model_class_name = 'Star'
         search.constellation_abbreviation = const.abbreviation
-        search.limiting_magnitude = 4.0
-        object_count = 'ERROR'
+        search.limiting_magnitude = 7.0
+        search.max_results = 10
 
-        response = Simbad.new.stars(search.simbad_query_params)
-        if response.code == 200
-          match = response.body.match(/Number of objects : (\d+)/)
-          if match
-            object_count = match.captures.first
+        begin
+          response = Simbad.new.stars(search.simbad_query_params)
+          if response.code == 200
+            match = response.body.match(/Number of objects : (\d+)/)
+            if match
+              object_count = match.captures.first
+              file.puts "found #{object_count} objects"
+            else
+              file.puts "ERROR [unexpected response [#{response.body[..50].rstrip!}]]"
+            end
+          else
+            file.puts "ERROR [#{response.code}]"
           end
+        rescue => e
+          file.puts "ERROR [#{e}]"
         end
-        file.puts "found #{object_count} objects in #{const.abbreviation} with #{const.boundary_vertices.count} vertices"
       end
     end
   end

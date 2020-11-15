@@ -1,88 +1,88 @@
-found ERROR objects in And with 37 vertices
-found ERROR objects in Ant with 13 vertices
-found ERROR objects in Aps with 10 vertices
-found ERROR objects in Aqr with 23 vertices
-found ERROR objects in Aql with 24 vertices
-found ERROR objects in Ara with 15 vertices
-found ERROR objects in Ari with 12 vertices
-found ERROR objects in Aur with 21 vertices
-found ERROR objects in Boo with 20 vertices
-found ERROR objects in Cae with 14 vertices
-found ERROR objects in Cam with 34 vertices
-found ERROR objects in Cnc with 12 vertices
-found ERROR objects in CVn with 15 vertices
-found 12 objects in CMa with 6 vertices
-found ERROR objects in CMi with 15 vertices
-found ERROR objects in Cap with 12 vertices
-found ERROR objects in Car with 21 vertices
-found ERROR objects in Cas with 31 vertices
-found ERROR objects in Cen with 20 vertices
-found ERROR objects in Cep with 39 vertices
-found ERROR objects in Cet with 14 vertices
-found ERROR objects in Cha with 6 vertices
-found ERROR objects in Cir with 16 vertices
-found 4 objects in Col with 7 vertices
-found ERROR objects in Com with 12 vertices
-found ERROR objects in CrA with 5 vertices
-found ERROR objects in CrB with 10 vertices
-found 2 objects in Crv with 6 vertices
-found ERROR objects in Crt with 9 vertices
-found 6 objects in Cru with 4 vertices
-found ERROR objects in Cyg with 33 vertices
-found ERROR objects in Del with 15 vertices
-found ERROR objects in Dor with 22 vertices
-found ERROR objects in Dra with 50 vertices
-found ERROR objects in Equ with 9 vertices
-found ERROR objects in Eri with 46 vertices
-found ERROR objects in For with 11 vertices
-found ERROR objects in Gem with 24 vertices
-found 4 objects in Gru with 9 vertices
-found ERROR objects in Her with 33 vertices
-found ERROR objects in Hor with 23 vertices
-found ERROR objects in Hya with 39 vertices
-found ERROR objects in Hyi with 14 vertices
-found ERROR objects in Ind with 12 vertices
-found ERROR objects in Lac with 17 vertices
-found ERROR objects in Leo with 20 vertices
-found ERROR objects in LMi with 17 vertices
-found 8 objects in Lep with 9 vertices
-found ERROR objects in Lib with 14 vertices
-found ERROR objects in Lup with 14 vertices
-found ERROR objects in Lyn with 23 vertices
-found ERROR objects in Lyr with 17 vertices
-found ERROR objects in Men with 10 vertices
-found ERROR objects in Mic with 5 vertices
-found ERROR objects in Mon with 19 vertices
-found 6 objects in Mus with 9 vertices
-found ERROR objects in Nor with 12 vertices
-found ERROR objects in Oct with 14 vertices
-found ERROR objects in Oph with 39 vertices
-found ERROR objects in Ori with 28 vertices
-found ERROR objects in Pav with 9 vertices
-found ERROR objects in Peg with 41 vertices
-found ERROR objects in Per with 28 vertices
-found ERROR objects in Phe with 12 vertices
-found ERROR objects in Pic with 22 vertices
-found ERROR objects in Psc with 26 vertices
-found ERROR objects in PsA with 6 vertices
-found ERROR objects in Pup with 13 vertices
-found ERROR objects in Pyx with 8 vertices
-found ERROR objects in Ret with 11 vertices
-found ERROR objects in Sge with 14 vertices
-found ERROR objects in Sgr with 13 vertices
-found ERROR objects in Sco with 20 vertices
-found ERROR objects in Scl with 7 vertices
-found ERROR objects in Sct with 6 vertices
-found ERROR objects in Ser with 15 vertices
-found ERROR objects in Sex with 7 vertices
-found ERROR objects in Tau with 27 vertices
-found 2 objects in Tel with 5 vertices
-found ERROR objects in Tri with 16 vertices
-found ERROR objects in TrA with 18 vertices
-found ERROR objects in Tuc with 11 vertices
-found ERROR objects in UMa with 32 vertices
-found ERROR objects in UMi with 22 vertices
-found 2 objects in Vel with 14 vertices
-found ERROR objects in Vir with 19 vertices
-found 5 objects in Vol with 7 vertices
-found ERROR objects in Vul with 21 vertices
+Andromeda (37 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Antlia (13 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Apus (10 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Aquarius (23 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Aquila (24 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Ara (15 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Aries (12 vertices): found 10 objects
+Auriga (21 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Boötes (20 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Caelum (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Camelopardalis (34 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Cancer (12 vertices): found 10 objects
+Canes Venatici (15 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Canis Major (6 vertices): found 10 objects
+Canis Minor (15 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Capricornus (12 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Carina (21 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Cassiopeia (31 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Centaurus (20 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Cepheus (39 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Cetus (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Chamaeleon (6 vertices): found 10 objects
+Circinus (16 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Columba (7 vertices): found 10 objects
+Coma Berenices (12 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Corona Australis (5 vertices): found 10 objects
+Corona Borealis (10 vertices): found 9 objects
+Corvus (6 vertices): found 10 objects
+Crater (9 vertices): found 10 objects
+Crux (4 vertices): found 10 objects
+Cygnus (33 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Delphinus (15 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Dorado (22 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Draco (50 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Equuleus (9 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Eridanus (46 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Fornax (11 vertices): found 10 objects
+Gemini (24 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Grus (9 vertices): found 10 objects
+Hercules (33 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Horologium (23 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Hydra (39 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Hydrus (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Indus (12 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Lacerta (17 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Leo (20 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Leo Minor (17 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Lepus (9 vertices): found 10 objects
+Libra (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Lupus (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Lynx (23 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Lyra (17 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Mensa (10 vertices): found 10 objects
+Microscopium (5 vertices): found 10 objects
+Monoceros (19 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Musca (9 vertices): found 10 objects
+Norma (12 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Octans (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Ophiuchus (39 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Orion (28 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Pavo (9 vertices): found 10 objects
+Pegasus (41 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Perseus (28 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Phoenix (12 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Pictor (22 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Pisces (26 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Piscis Austrinus (6 vertices): found 10 objects
+Puppis (13 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Pyxis (8 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Reticulum (11 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Sagitta (14 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Sagittarius (13 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Scorpius (20 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Sculptor (7 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Scutum (6 vertices): found 10 objects
+Serpens (15 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Sextans (7 vertices): ERROR [unexpected response []]
+Taurus (27 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Telescopium (5 vertices): found 10 objects
+Triangulum (16 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Triangulum Australe (18 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Tucana (11 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Ursa Major (32 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Ursa Minor (22 vertices): ERROR [unexpected response [!! Command error : No object found]]
+Vela (14 vertices): found 10 objects
+Virgo (19 vertices): found 10 objects
+Volans (7 vertices): found 10 objects
+Vulpecula (21 vertices): ERROR [unexpected response [!! Command error : No object found]]
