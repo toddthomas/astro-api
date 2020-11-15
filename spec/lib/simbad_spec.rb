@@ -91,13 +91,15 @@ describe Simbad do
       expect(response.body).to match /Number of objects : 5/
     end
 
-    skip 'currently doesn\'t succeed for a constellation with 8 boundary vertices' do
+    it 'succeeds for a constellation with 8 boundary vertices' do
+      pending "maybe boundary data isn't sufficiently accurate?"
       response = subject.stars(brighter_than_4_in_pyx.simbad_query_params)
       expect(response.code).to eq 200
       expect(response.body).to match /Number of objects : 42/
     end
 
-    skip 'currently doesn\'t succeed for a constellation with the largest number (50) of boundary vertices' do
+    it 'currently doesn\'t succeed for a constellation with the largest number (50) of boundary vertices' do
+      pending "maybe boundary data isn't sufficiently accurate?"
       response = subject.stars(brighter_than_4_in_draco.simbad_query_params)
       expect(response.code).to eq 200
       expect(response.body).to match /Number of objects : 42/

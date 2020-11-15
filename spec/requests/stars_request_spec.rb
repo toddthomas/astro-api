@@ -6,7 +6,7 @@ RSpec.describe 'Stars', type: :request do
   context 'GET /stars' do
     it 'returns http success for valid query params' do
       get '/stars', params: {limiting_magnitude: 1}, headers: headers
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status :success
       response_object = JSON.parse(response.body)
       expect(response_object.dig('search', 'result_count')).to eq 17
     end
@@ -24,6 +24,14 @@ RSpec.describe 'Stars', type: :request do
       expect(response_object.dig('search', 'result_count')).to eq 56
       expect(response_object.dig('search', 'results').first.dig('star', 'visual_magnitude')).to eq(-1.46)
       expect(response_object.dig('search', 'results').last.dig('star', 'visual_magnitude')).to eq 1.98
+    end
+
+    it 'works for a limit 1 request' do
+      get '/stars', params: {limiting_magnitude: 2, max_results: 1}, headers: headers
+      expect(response).to have_http_status :success
+      response_object = JSON.parse(response.body)
+      expect(response_object.dig('search', 'result_count')).to eq 1
+      expect(response_object.dig('search', 'results').first.dig('star', 'identifier')).to eq '* alf Cyg'
     end
 
     it 'returns http bad request for invalid limiting_magnitude' do

@@ -9,13 +9,10 @@ class SphericalEquatorialCoordinates
 
   def self.parse(data)
     parse_error_message = "couldn't parse RA and DEC from [#{data}]"
-    ra_match = data.match(/^(\d+ \d+ \d+\.*\d+)/)
-    dec_match = data.match(/([+-]\d+ \d+ \d+\.*\d+)/)
-    if ra_match.nil? || dec_match.nil?
-      raise ArgumentError, parse_error_message
-    end
-    ra_data = ra_match.captures.first
-    dec_data = dec_match.captures.first
+    match = data.match(/(\d+ \d+ \d+\.*\d+)\s+([+-]\d+ \d+ \d+\.*\d+)/)
+    raise ArgumentError, parse_error_message if match.nil?
+
+    ra_data, dec_data = match.captures
 
     result = new(
       right_ascension: HoursMinutesSeconds.parse(ra_data),
