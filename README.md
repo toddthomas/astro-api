@@ -419,11 +419,6 @@ GET https://secure-springs-70266.herokuapp.com/stars/types/carbon?limiting_magni
 ```
 Carbon stars are really exciting to view in a telescope because they have a deep reddish-orange color. "carbon" is a convenience term that doesn't match SIMBAD's type identifier for carbon stars (`C*`), so a mapping would have to be established.
 
-Get the JSON data for a particular star by name, such as [Betelgeuse](https://en.wikipedia.org/wiki/Betelgeuse).
-```http request
-GET https://secure-springs-70266.herokuapp.com/stars/betelgeuse
-```
-
 Galaxies! And other objects.
 ```http request
 GET https://secure-springs-70266.herokuapp.com/galaxies?limiting_magnitude=14.0&type=spiral
