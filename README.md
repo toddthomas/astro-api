@@ -109,7 +109,7 @@ Accept: application/json
 ```
 You can't set it larger than 1000, because I haven't done extensive testing with large values, and I don't want to blow up SIMBAD or Heroku.
 
-By the way, SIMBAD responds with a completely different resource representation when you request only one result. I didn't know that until I was testing the above example while writing this readme. This is the kind of quirkiness that motivates this wrapper API.
+By the way, SIMBAD responds with a completely different resource representation when you request only one result. I didn't know that until I was testing the above example while writing this readme. That's the kind of quirkiness that motivates this wrapper API.
 
 By default, results are sorted by identifier. You can sort by other star properties, such as visual magnitude, if you like.
 
@@ -245,7 +245,7 @@ Accept: application/json
 }
 ```
 
-To help navigate in a big universe, you can filter your star search by constellation. For example, get all stars with visual magnitude brighter than 3 in Crux, the Southern Cross.
+To help navigate in a big universe, you can filter your star search by constellation (with some [caveats](#Caveats)). For example, get all stars with visual magnitude brighter than 3 in Crux, the Southern Cross.
 ```http request
 GET https://secure-springs-70266.herokuapp.com/constellations/crux/stars?limiting_magnitude=3
 Accept: application/json
