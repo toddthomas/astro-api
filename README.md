@@ -107,9 +107,23 @@ Accept: application/json
   }
 }
 ```
-You can't set it larger than 1000, because I haven't done extensive testing with large values, and I don't want to blow up SIMBAD or Heroku.
 
 By the way, SIMBAD responds with a completely different resource representation when you request only one result. I didn't know that until I was testing the above example while writing this readme. That's the kind of quirkiness that motivates this wrapper API.
+
+You can't set `max_results` larger than 1000, because I haven't done extensive testing with large values, and I don't want to blow up SIMBAD or Heroku.
+
+```http request
+GET https://secure-springs-70266.herokuapp.com/stars?limiting_magnitude=2&max_results=1000000000000
+Accept: application/json
+```
+
+```json
+{
+  "error": {
+    "message": "{:max_results=>[\"must be an integer no greater than 1000\"]}"
+  }
+}
+```
 
 By default, results are sorted by identifier. You can sort by other star properties, such as visual magnitude, if you like.
 
