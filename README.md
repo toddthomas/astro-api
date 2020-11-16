@@ -403,10 +403,20 @@ Accept: application/json
 
 Currently, only some constellations can be used for filtering. The implementation of filtering by constellation requires constellation boundary data in the form of the vertices of the polygon comprising the boundary. The constellation data I scraped from the IAU at https://www.iau.org/public/themes/constellations includes these vertices, and the app appears to be submitting them correctly to SIMBAD, but for many constellations, no results are returned. I thought that might be due to a limit on the number of vertices that SIMBAD can process, but it doesn't seem to be that simple. It may be that the vertex data I obtained isn't accurate enough. The Rake task `constellations:search_in_all` generates a report in the file `results-for-all-constellations.txt` of the success or failure of attempting to find stars in each constellation. See that file to learn which constellation filters are working.
 
-## Unimplemented API Ideas
+## Ideas for the future
 
-That's it for what you can currently do with the API. Here are some things I'd like to be able to do with it in the future.
+That's it for what you can currently do with the API. Here are some features I'd like to see in the future.
 
+### Result caching
+SIMBAD can be slow! It would be cool to cache search results locally, so they'd be served out of this app's database the next time that exact search is performed. This is complicated by the mechanism used for filtering by constellation.
+
+As mentioned in [Caveats](#Caveats), SIMBAD is able to perform a [query to find stars within a polygonal region on the sky](http://simbad.u-strasbg.fr/simbad/sim-help?Page=sim-fsam#Sregion). This app uses that query to filter by constellation, by providing the vertices of the polygon matching a constellation's boundaries. SIMBAD has no other concept of constellations that I can find. There is no field on a celestial object in its database identifying the constellation it belongs to.
+
+If the results of a search filtered by constellation were saved locally, and then that search was repeated, the app would have to either perform the same very-complicated geometric region query (so much work that's already been done!), or rely on a new constellation field added to the `Star` model. The latter option seems like the clear winner, but the same star can be returned in search results that are filtered by constellation, and those that aren't. If the star had been written to the database with constellation membership data added, and then appeared in a search result not filtered by constellation, simply doing an upsert would erase the constellation data. I need to figure out how to handle this case correctly and efficiently.
+
+Also, `Star` is not currently an `ActiveRecord` model. It currently quacks enough like one for `factory-bot` to build stubbed instances of it, but there's more work to be done to make it live in the database. In particular, its `coordinates` attribute is currently a nested structure of instances of other classes, which would need to be converted to several new attributes on the model in order to maintain precision.
+
+### More APIs!
 Get a list of stellar types in SIMBAD's object hierarchy. Or should this be done only with query params?
 ```http request
 GET https://secure-springs-70266.herokuapp.com/stars/types
